@@ -151,8 +151,6 @@ if (birthYear <= 2000) {
 }
 
 console.log(century);
-*/
-
 
 // TYPE CONVERSION
 const inputYear = '1991';
@@ -173,3 +171,31 @@ console.log('23' + '10' + 3);
 let n = '1' + 1; // '1' + '1' = '11'
 n = n - 1;       // 11 - 1 = 10
 console.log(n);
+*/
+
+
+// Truthy and Falsy Value
+
+// 5 falsy values:- 0, '', undefined, null, NaN 
+// everything else are truthy values
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('Jeevan'));
+console.log(Boolean({}));
+console.log(Boolean(''));
+
+// JavaScript implicitly does type coercion in '''logical operation'''
+const money = 0;
+if (money) {
+    console.log("Don't spend it all");
+} else {
+    console.log("You should get a job!")
+}
+
+let height = 0; // bug
+if (height) {
+    console.log("YAY! Height is defined");
+} else {
+    console.log("Height is UNDEFINED");
+}
