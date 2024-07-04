@@ -55,7 +55,7 @@ job = 'teacher';
 
 lastName = 'Sal'; // create variable in global
 console.log(lastName)
-*/
+
 
 // OPERATOR
 
@@ -92,3 +92,20 @@ const isFullAge = ageSarah >= 18;
 console.log(isFullAge);
 
 console.log(now - 1991 > now - 2011);
+*/
+
+const now = 2081;
+const ageJonas = now - 1991;
+const ageSarah = now - 2011;
+
+console.log(now - 1991 > now - 2011);
+
+let x, y;
+x = y = 25 -10 -5; // x = y = 10, y = 10 --> x = y --> x = 10
+console.log(x, y);
+
+const averageAge = ageJonas + ageSarah / 2;
+console.log(averageAge);
+
+const avgAge = (ageJonas + ageSarah) / 2;
+console.log(avgAge);
