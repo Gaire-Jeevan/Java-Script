@@ -92,7 +92,6 @@ const isFullAge = ageSarah >= 18;
 console.log(isFullAge);
 
 console.log(now - 1991 > now - 2011);
-*/
 
 const now = 2081;
 const ageJonas = now - 1991;
@@ -109,3 +108,47 @@ console.log(averageAge);
 
 const avgAge = (ageJonas + ageSarah) / 2;
 console.log(avgAge);
+
+// STRING
+const firstName = 'Jeevan';
+const job = 'Engineer';
+const birthYear = 1990;
+const year = 2037;
+
+const jeevan = "I'm " + firstName + ", a " + (year - birthYear) + ' years old ' + job + "!";
+console.log(jeevan); 
+
+const jeevanNew = `I'm ${firstName}`;
+console.log(jeevanNew);
+
+console.log(`Just a regular string...`);
+
+console.log('String with \n\
+    multiple \n\
+    lines');
+
+console.log(`String
+    multiple
+    lines`);
+*/
+
+// Taking Decisions if_else
+const age = 15;
+const isOldEnough = age >= 18;
+
+if (isOldEnough) {
+    console.log('Sarah can start driving 🏍️');
+} else {
+    let yearsLeft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`)
+}
+
+const birthYear = 1991;
+let century;
+if (birthYear <= 2000) {
+    century  = 20;
+} else {
+    century = 19;
+}
+
+console.log(century);
