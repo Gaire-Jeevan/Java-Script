@@ -130,7 +130,6 @@ console.log('String with \n\
 console.log(`String
     multiple
     lines`);
-*/
 
 // Taking Decisions if_else
 const age = 15;
@@ -152,3 +151,25 @@ if (birthYear <= 2000) {
 }
 
 console.log(century);
+*/
+
+
+// TYPE CONVERSION
+const inputYear = '1991';
+console.log(Number(inputYear) + 18);
+console.log(inputYear + 18);
+
+console.log(Number('Jeevan')); // fails to convert into Number
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+// type coercion
+console.log('I am ' + 23 + ' years old.');
+console.log('23' - '10' - 3); // converted to number as there is '-' near number (reverse conversion)
+console.log('23' - '10' + 3); // converted number to String as '+' is present near number
+console.log('23' + '10' + 3);
+
+let n = '1' + 1; // '1' + '1' = '11'
+n = n - 1;       // 11 - 1 = 10
+console.log(n);
