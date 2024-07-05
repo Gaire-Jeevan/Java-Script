@@ -197,7 +197,6 @@ if (height) {
 } else {
     console.log("Height is UNDEFINED");
 }
-    */
 
 const age = '18';
 if (age === 18) {
@@ -223,3 +222,29 @@ if (favourite === 23){
 if (favourite !== 23) {
     console.log('Why not 23?');
 }
+     */
+
+
+// Boolean Logic
+
+const hasDriverLicence = true;
+const hasGooVision = true;
+
+console.log(hasDriverLicence && hasGooVision);
+console.log(hasDriverLicence || hasGooVision);
+console.log(!hasDriverLicence);
+
+const shouldDrive = hasDriverLicence && hasGooVision;
+
+if (shouldDrive) {
+    console.log("Sarah is able to drive!");
+}
+
+else {
+    console.log("Someone else should drice...");
+}
+
+const isTired = false;
+console.log(hasDriverLicence || hasGooVision || isTired);
+console.log(hasDriverLicence && hasGooVision && isTired);
+console.log(hasDriverLicence && hasGooVision && !isTired);
