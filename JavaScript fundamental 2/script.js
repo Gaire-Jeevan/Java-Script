@@ -337,7 +337,7 @@ console.log(jeevan.getSummary());
 for(let rep = 1; rep <= 10; rep++) {
     console.log(`Lifting weights repetition ${rep} 🏋️`)
 }
-*/
+
 
 
 // Looping Backwards and Loops
@@ -361,4 +361,27 @@ for (let excercise = 1; excercise < 4; excercise++) {
     for(let rep = 1; rep <= 5; rep++) {
         console.log(`Excercise ${excercise}: Lifting weights repetition ${rep} 🏋️`)
     }
+}
+*/
+
+
+// While loop
+
+for(let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️`);
+}
+
+console.log("-----while loop-----");
+let rep = 0;
+while (rep <= 10) {
+    console.log(`Lifting weights repetition ${rep} 🏋️`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6 ) console.log('Loop is about to end...')
 }
