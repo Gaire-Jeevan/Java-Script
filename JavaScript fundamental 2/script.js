@@ -235,8 +235,6 @@ const jeevan = {
     job: 'student',
     friends: ['Bibek', 'Ram', "Hari"]
 };
-*/
-
 
 
 // Retrieving Objects
@@ -276,3 +274,46 @@ console.log(jeevan);
 
 // Challenge
 console.log(`${jeevan.firstName} has ${jeevan.friends.length} friends, and his best friend is called ${jeevan.friends[0]}`);
+*/
+
+
+
+// OBJECT METHOD        --> we can use function expression as value but not function declaration
+
+const jeevan = {
+    firstName : 'Jeevan',
+    lastName: 'Gaire',
+    birthYear: 1991,
+    job: 'student',
+    friends: ['Bibek', 'Ram', "Hari"],
+    hasDriverLicense: false,
+
+    // calcAge: function(birthYear) {
+    //     return 2037 - birthYear;
+    // }
+
+    // calcAge: function() {
+    //     console.log(this);
+    //     return 2037 - this.birthYear;
+    // }
+
+    calcAge: function() {
+        this.age = 2037 - this.birthYear
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriverLicense ? "driver's licence." : "no driver's licence."}`;
+    }
+};
+
+console.log(jeevan.calcAge());
+// console.log(jeevan['calcAge'](1991));
+
+console.log(jeevan.age);
+
+
+// Challenge
+// Jeevan is a 46-years old student and he has a driverLicence.
+
+console.log(jeevan.getSummary());
