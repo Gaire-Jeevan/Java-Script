@@ -16,7 +16,7 @@ if (hasDriverLicence) {
 
 // const interface = 'Audio'; // strict note reserve this word for future use
 // const private = 5434;
-*/
+
 
 function logger() {
     console.log('My name is Jonas');
@@ -40,3 +40,28 @@ const appleOrangeJuice = fruitProcessor(2, 4);
 console.log(appleOrangeJuice);
 
 const num = Number('23'); // Build in function
+*/
+
+
+// FUNCTION DECLARATION
+
+function calcAge1(birthYear) {
+    // const age = 2037 - birthYear;
+    return 2037 - birthYear;
+}
+
+const age1 = calcAge1(1991);
+console.log(age1);
+
+
+// FUNCTION EXPRESSION   -> function without name (anonymous function)
+//                       -> expression produce value
+
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+const age2 = calcAge2(1991);
+console.log(age2);
+
+
+// we cannot call function for function expression but can in function declaration
