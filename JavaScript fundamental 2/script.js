@@ -134,7 +134,7 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 
 console.log(yearsUntilRetirement(1991, 'Jonas'));
 console.log(yearsUntilRetirement(1950, 'Mike'));
-*/
+
 
 
 // ARRAYS
@@ -180,3 +180,37 @@ console.log(age1, age2, age3);
 const ages = [age1, age2, age3]
 const ag = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ag);
+*/
+
+
+// BASIC OPERATION IN ARRAY
+const friends = ['Michael', 'Steven', 'Peter']
+
+
+// Add element
+const newLength = friends.push('Jay');   // add element at the end of the array
+console.log(friends);
+console.log(newLength)
+
+friends.unshift('John'); // add element at the beginning of the array
+console.log(friends);
+
+// Remove element
+const popped = friends.pop();  // last
+console.log(popped);
+console.log(friends);
+
+friends.shift();  // first
+console.log(friends)
+
+console.log(friends.indexOf('Steven'));
+console.log(friends.indexOf('Bob'));
+
+friends.push(23);
+console.log(friends.includes('Steven'));
+console.log(friends.includes('Bob'));
+console.log(friends.includes('23')); // straight check element doesn't do type coersion
+
+if (friends.includes('Steven')) {
+    console.log('You have a friend called Steven');
+}
