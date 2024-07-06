@@ -180,7 +180,7 @@ console.log(age1, age2, age3);
 const ages = [age1, age2, age3]
 const ag = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ag);
-*/
+
 
 
 // BASIC OPERATION IN ARRAY
@@ -214,3 +214,24 @@ console.log(friends.includes('23')); // straight check element doesn't do type c
 if (friends.includes('Steven')) {
     console.log('You have a friend called Steven');
 }
+*/
+
+
+// OBJECTS       value pair --> give name to each value
+
+const jeevanArray = [
+    'Jeevan',
+    'Gaire',
+    2037 - 1991,
+    'student',
+    ['Bibek', 'Ram', "Hari"]
+]
+
+// object literal syntax --> giving each element of object
+const jeevan = {
+    firstName : 'Jeevan',
+    lastName: 'Gaire',
+    age: 2037 - 1991,
+    job: 'student',
+    friends: ['Bibek', 'Ram', "Hari"]
+};
