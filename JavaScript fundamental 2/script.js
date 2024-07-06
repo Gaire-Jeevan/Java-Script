@@ -214,7 +214,7 @@ console.log(friends.includes('23')); // straight check element doesn't do type c
 if (friends.includes('Steven')) {
     console.log('You have a friend called Steven');
 }
-*/
+
 
 
 // OBJECTS       value pair --> give name to each value
@@ -235,3 +235,44 @@ const jeevan = {
     job: 'student',
     friends: ['Bibek', 'Ram', "Hari"]
 };
+*/
+
+
+
+// Retrieving Objects
+
+const jeevan = {
+    firstName : 'Jeevan',
+    lastName: 'Gaire',
+    age: 2037 - 1991,
+    job: 'student',
+    friends: ['Bibek', 'Ram', "Hari"]
+};
+
+console.log(jeevan);
+
+// dot notation require the exact property
+console.log(jeevan.lastName);
+
+// bracket notation can be used to take input from user and fill the bracket with property that user input
+console.log(jeevan['firstName']);
+
+const nameKey = 'Name';
+console.log(jeevan['first' + nameKey]);
+console.log(jeevan['last' + nameKey]);
+
+// console.log(jonas.'last' + nameKey);
+const interestedIn = prompt("What do you want to know about Jeevan? Choose between firstName, lastName, age, job, and friends.");
+
+if(jeevan[interestedIn]) {
+    console.log(jeevan[interestedIn])
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job, and friends.');
+}
+
+jeevan.location = 'Portugal';
+jeevan['twitter'] = '@GaireJ7';
+console.log(jeevan);
+
+// Challenge
+console.log(`${jeevan.firstName} has ${jeevan.friends.length} friends, and his best friend is called ${jeevan.friends[0]}`);
