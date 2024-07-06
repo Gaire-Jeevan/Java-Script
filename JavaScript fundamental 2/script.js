@@ -317,7 +317,7 @@ console.log(jeevan.age);
 // Jeevan is a 46-years old student and he has a driverLicence.
 
 console.log(jeevan.getSummary());
-*/
+
 
 
 // console.log("Lifting weights repetition 1 🏋️");
@@ -336,4 +336,29 @@ console.log(jeevan.getSummary());
 // for loops keep running while condition is TRUE
 for(let rep = 1; rep <= 10; rep++) {
     console.log(`Lifting weights repetition ${rep} 🏋️`)
+}
+*/
+
+
+// Looping Backwards and Loops
+
+const jeevanArray = [
+    'Jeevan',
+    'Gaire',
+    2037 - 1991,
+    'student',
+    ['Bibek', 'Ram', "Hari"]
+];
+
+for(let i = jeevanArray.length - 1; i >= 0; i--) {
+    console.log(jeevanArray[i]);
+}
+
+// nested loop
+for (let excercise = 1; excercise < 4; excercise++) {
+    console.log(`------Starting excercise ${excercise}------`);
+
+    for(let rep = 1; rep <= 5; rep++) {
+        console.log(`Excercise ${excercise}: Lifting weights repetition ${rep} 🏋️`)
+    }
 }
