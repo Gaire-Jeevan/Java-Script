@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 function calcAge(birthYear) {
   const age = 2037 - birthYear;
   
@@ -122,3 +122,60 @@ matilda.calcAge();
 const f = jonas.calcAge;
 
 // f();
+
+
+// Pitfall of this keyword
+
+// var firstName = 'Matilda';
+
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this.year);
+    console.log(2037 - this.year);
+
+    // Another pitfall
+
+    // solution 1 of pitfall
+
+    // const self = this; // self or that
+    // const isMillenial = function() {
+
+    //     console.log(self.year >= 1981 && self.year <= 1996);
+
+    //     // console.log(this.year >= 1981 && this.year <= 1996);
+    // };
+
+    // Solution 2
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+
+      // console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  //   Avoid arrow function as arrow function doesn't have it's '''this''' keyword
+  greet: () => console.log(`Hey ${this.firstName}`), // this --> window object so undefined (window.firstName)
+};
+
+jonas.greet();
+jonas.calcAge();
+
+// Argument keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 10);
+*/
