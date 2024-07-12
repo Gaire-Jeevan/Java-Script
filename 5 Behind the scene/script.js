@@ -178,8 +178,8 @@ var addArrow = (a, b) => {
   return a + b;
 };
 addArrow(2, 5, 10);
-*/
 
+// problem while copying the object
 
 let age = 30;
 let oldAge = age;
@@ -198,3 +198,48 @@ friend.age = 27;
 
 console.log('Friends: ', friend); 
 console.log('Me: ', friend); 
+*/
+
+// Solution while copying object
+
+// Primitive types
+let lastName = 'Willams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Willams',
+  age: 27,
+};
+
+const marriedJessica = jessica;
+
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage: ', jessica);
+console.log('After marriage: ', marriedJessica);
+
+// marriedJessica = {};
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Willams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+// if another object is present inside then the problem remains same
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage: ', jessica2);
+console.log('After marriage: ', jessicaCopy);
+
+// DEEP CLONE
+// --> should use deep clone to solve this problem
