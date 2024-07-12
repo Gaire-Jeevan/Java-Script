@@ -28,27 +28,87 @@ const restaurant = {
   },
 
   orderDelivery: function ({
-    time = '20:00', 
-    address, 
-    mainIndex = 0, 
-    starterIndex = 1}) 
-    {
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
-  }
+    time = '20:00',
+    address,
+    mainIndex = 0,
+    starterIndex = 1,
+  }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
 restaurant.orderDelivery({
   time: '22:30',
-  address: "Here",
+  address: 'Here',
   mainIndex: 2,
   starterIndex: 2,
 });
 
 restaurant.orderDelivery({
-  address : "Here",
+  address: 'Here',
   starterIndex: 1,
-})
+});
 
+///////////////////////////////////////////////////////////
+// Spread Operators
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr1 = [1, 2, arr];
+console.log(newArr1);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+// this is just like writing individual element
+console.log(1, 2, 7, 8, 9);
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 array
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// Iterable :- array, set, map, string but not object
+const str = 'jonas';
+const letters = [...str, '', 'S.'];
+console.log(letters);
+
+console.log(...str);
+// console.log(`${...str} Davis`);
+
+const ingredients = [prompt("Let's make pasta! Ingredient1?"), prompt("Ingredient 2?"), prompt("Ingredient 3")];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Gaire'}
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy);
+console.log(restaurant);
+/*
+///////////////////////////////////////////////////////////
 // Object destructuring
 const { name, openingHour, categories } = restaurant;
 console.log(name, openingHour, categories);
@@ -75,7 +135,8 @@ const obj = { a: 23, b: 7, c: 14 };
 // nested objects
 const {fri : {open: o, close : c}} = openingHour;
 console.log(open, close);
-/*
+
+
 ///////////////////////////////////////
 const arr = [2, 3, 4];
 const a = arr[0];
