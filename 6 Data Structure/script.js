@@ -50,8 +50,23 @@ const restaurant = {
   },
 };
 
+// The Nullish Coalescing Operator
+restaurant.numGuests = 0;
+const guests1 = restaurant.newGuests ? restaurant.numGuests : 10;
+console.log(guests1);
 
-// Short circuiting
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+/*
+//////////////////////////////////////////////////////////
+
+// Short circuiting (&& and ||)
+
 // Use ANY data type, return ANY data type, short-circuiting (short-circuit evaluation)
 console.log('-------------------OR----------------');
 
@@ -82,7 +97,7 @@ if(restaurant.orderPizza) {
 // if present       then call function
 console.log('if function is present then call it');
 restaurant.orderPizz && restaurant.orderPizza('mushroom', 'spinach');
-/*
+
 ///////////////////////////////////////////////////////////
 // 1) Destructuring
 
