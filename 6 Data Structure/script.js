@@ -69,6 +69,54 @@ const restaurant = {
 };
 
 /////////////////////////////////////////////////////////////////////////
+//  Working with String - Part I
+
+const airline = 'Nepal Airlines';
+const plane = 'A330';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+console.log('B737'[0]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('e'));
+console.log(airline.indexOf('Nepal'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(6, 9));
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function(seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s == 'B' || s === 'E') {
+    console.log('You got middle seat 😁');
+  }
+  else{
+    console.log('You got lucky 😎');
+  }
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('8E');
+
+console.log(new String('jonas'));
+console.log(typeof new String('jonas'));
+console.log(typeof new String('jonas').slice(1));
+
+/*
+/////////////////////////////////////////////////////////////////////////
 // Map Iteration
 
 const question = new Map([
@@ -107,7 +155,8 @@ console.log(...question);
 console.log(question.entries());
 console.log(...question.keys());
 console.log(...question.values());
-/*
+
+
 ////////////////////////////////////////////////////////////////////////
 // Maps: Fundamental
 
