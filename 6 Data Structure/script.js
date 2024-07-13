@@ -37,14 +37,9 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  // 
-  
-  orderDelivery({
-    time = '20:00',
-    address,
-    mainIndex = 0,
-    starterIndex = 1,
-  }) {
+  //
+
+  orderDelivery({ time = '20:00', address, mainIndex = 0, starterIndex = 1 }) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
@@ -73,7 +68,74 @@ const restaurant = {
   },
 };
 
+////////////////////////////////////////////////////////////////////////
+// SETS
+
+const orderSet = new Set([
+  'Pasta', 
+  'Pizza', 
+  'Risotto', 
+  'Pasta', 
+  'Pizza',
+]);
+console.log(orderSet.size);
+console.log(orderSet);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Bread'));
+
+console.log(new Set('Jeevan'));
+
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+
+orderSet.delete('Risotto');
+
+// orderSet.clear();
+console.log(orderSet);
+
+for(const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chief', 'Waiter', 'Manager', 'Chief', 'Waiter'];
+
+// extracting all unique element and making one new array
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(new Set(['Waiter', 'Chief', 'Waiter', 'Manager', 'Chief', 'Waiter']).size);
+
+console.log(new Set('jeevanGaire').size);
+/*
+/////////////////////////////////////////////////////////
+// Looping Object
+
+// Property Names
+const properties = Object.keys(openingHour);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// Property Values
+const values = Object.values(openingHour);
+console.log(values);
+
+// Entire object
+const entries = Object.entries(openingHour);
+console.log(entries);
+
+// [key, value]
+for (const [key, {open, close}] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+//////////////////////////////////////////////////////////
 // Optional Chaining
+
 if (restaurant.openingHour && restaurant.openingHour.mon) console.log(restaurant.openingHour.mon.open);
 
 // without optional chaining
@@ -104,7 +166,7 @@ console.log(users[0] ?.name ?? 'User array empty');
 
 if (users.length > 0) console.log(users[0].name);
 else console.log('user array empty');
-/*
+
 ///////////////////////////////////////////////////////////
 // Looping Arrays (The for-of Loop)
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
