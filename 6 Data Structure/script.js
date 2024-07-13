@@ -69,6 +69,69 @@ const restaurant = {
 };
 
 /////////////////////////////////////////////////////////////////////////
+// Working with Strings - Part II
+
+const airline = 'Nepal Airlines';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'jOnAs';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Comparing email
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@Jonas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(normalizedEmail === email);
+
+// replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',','.');
+console.log(priceUS);
+
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+//              regular expression    g - global
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus320neo';
+console.log(plane.startsWith('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.endsWith('neo'));
+
+if (plane.startsWith('Airbus') && plane .endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+}
+
+// Practice exercise
+const checkBaggage = function(items) {
+  const baggage = items.toLowerCase();
+  if(baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  }
+  else {
+    console.log('Welcome aboard!');
+  }
+}
+checkBaggage('I have a laptop, some Food and a pocket knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snaks and a gun for protection');
+/*
+/////////////////////////////////////////////////////////////////////////
 //  Working with String - Part I
 
 const airline = 'Nepal Airlines';
@@ -115,7 +178,7 @@ console.log(new String('jonas'));
 console.log(typeof new String('jonas'));
 console.log(typeof new String('jonas').slice(1));
 
-/*
+
 /////////////////////////////////////////////////////////////////////////
 // Map Iteration
 
