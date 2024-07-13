@@ -50,6 +50,40 @@ const restaurant = {
   },
 };
 
+
+// Short circuiting
+// Use ANY data type, return ANY data type, short-circuiting (short-circuit evaluation)
+console.log('-------------------OR----------------');
+
+console.log(3 || 'Jonas'); // if first value is truthy value then it doesn't even read the second value
+
+console.log("" || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || '23 || null');
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.newGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+// using short circuiting
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('-------------------AND----------------');
+console.log(0 && 'Jonas');
+console.log("hello" && 23 && null && 'jonas');
+
+// Practical example
+if(restaurant.orderPizza) {
+  restaurant.orderPizza('mushroom', 'spinach');
+}
+// if present       then call function
+console.log('if function is present then call it');
+restaurant.orderPizz && restaurant.orderPizza('mushroom', 'spinach');
+/*
+///////////////////////////////////////////////////////////
 // 1) Destructuring
 
 // Rest Pattern --> just opposite of Spread Operator
@@ -87,7 +121,7 @@ add(...x);
 
 restaurant.orderPizza('mushroom', 'onion', 'olives', 'spinash');
 
-/*
+
 ///////////////////////////////////////////////////////////
 restaurant.orderDelivery({
   time: '22:30',
