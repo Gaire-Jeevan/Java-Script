@@ -73,14 +73,40 @@ const restaurant = {
   },
 };
 
-///////////////////////////////////////////////////////////
-// Enhanced Object literals
+// Optional Chaining
+if (restaurant.openingHour && restaurant.openingHour.mon) console.log(restaurant.openingHour.mon.open);
 
+// without optional chaining
+// console.log(restaurant.openingHour.mon.open);
 
+// WITH optional chaining
+console.log(restaurant.openingHour.mon ?.open);
+console.log(restaurant.openingHour ?.mon ?.open);
 
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  // console.log(day);
+  const open = restaurant.openingHour[day] ?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order ?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.orderChowmein ?.(0,1) ?? 'Method does not exist');
+
+// Arrays
+const users = [
+  {name: 'Jonas', email:'abc@abc'}
+]
+
+console.log(users[0] ?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
 /*
 ///////////////////////////////////////////////////////////
-// Looping Arrays
+// Looping Arrays (The for-of Loop)
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 for (const item of menu) console.log(item);
