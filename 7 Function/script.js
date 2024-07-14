@@ -127,7 +127,7 @@ const greet2 = (greeting) => (name) => console.log(`${greeting} ${name}`);
 
 greet1('Namaste')('Ram');
 greet2('Namaste')('Ram Ram');
-*/
+
 
 ////////////////////////////////////////////////////
 // The Call and Apply method
@@ -220,3 +220,24 @@ const addTaxRate= function(rate) {
 
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
+*/
+
+/////////////////////////////////////////////////
+// Immediately Invoked Function
+
+const runOnce = function() {
+    console.log('this will never run again');
+};
+
+runOnce();
+
+// IIFE
+(function() {
+    console.log('this will never run again');
+})();
+
+() => console.log('this will also never run again')();
+
+{
+    const isPrivate = 16;
+}
