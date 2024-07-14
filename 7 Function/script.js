@@ -67,7 +67,7 @@ const newPassport = function(person) {
 
 newPassport(jonas);
 checkIn(flight, jonas);
-*/
+
 
 ////////////////////////////////////////////////////
 // Higher Order Function (function accepting function)
@@ -99,3 +99,31 @@ const high5 = function() {
 document.body.addEventListener('click', high5);
 
 ['Jonas', 'Martin', 'Adam'].forEach(high5);
+*/
+
+/////////////////////////////////////////////////////
+// Function Returning function
+
+const greet = function(greeting) {
+    return function(name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+// Challenge --> Arrow function
+greet('Hello')('Jeevan');
+
+const greet1 = (greeting) => {
+    return function(name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greet2 = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
+greet1('Namaste')('Ram');
+greet2('Namaste')('Ram Ram');
