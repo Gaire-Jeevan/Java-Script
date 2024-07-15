@@ -101,20 +101,20 @@ const createUserNames = function (accs) {
   })
 };
 
-console.log(createUserNames(accounts));
+
 console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-// const currencies = new Map([
-//     ['USD', 'United States dollar'],
-//     ['EUR', 'Euro'],
-//     ['GBP', 'Pound sterling'],
-//   ]);
+const currencies = new Map([
+    ['USD', 'United States dollar'],
+    ['EUR', 'Euro'],
+    ['GBP', 'Pound sterling'],
+  ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
 /////////////////////////////////////////////////
@@ -274,4 +274,27 @@ const movementsDescription = movements.map((movement, index, arr) => {
 });
 console.log(movementsDescription);
 */
+
+///////////////////////////////////////////////////////////////////////
+// filter method
+
+const deposits = movements.filter(function(mov) {
+  return mov > 0;
+});
+console.log(deposits);
+
+// movement < 0
+const withdrawal = movements.filter(function(mov) {
+  return mov < 0;
+});
+console.log('withdraw: ', withdrawal);
+
+// for of loop
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawalFor = [];
+for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
+console.log(withdrawalFor);
 
