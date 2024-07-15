@@ -61,32 +61,48 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovement = function(movements) {
+const displayMovement = function (movements) {
+  // clear the container of HTML to fill new data
+  containerMovements.innerHTML = '';
+  // .textContent = 0
 
-    // clear the container of HTML to fill new data
-    containerMovements.innerHTML = '';
-    // .textContent = 0
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-    movements.forEach(function(mov, i) {
-        const type = mov > 0 ? 'deposit' : 'withdrawal';
-
-        const html = `
+    const html = `
           <div class="movements__row">
-            <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+            <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
             
             <div class="movements__value">${mov}</div>
           </div>
         `;
 
-        containerMovements.insertAdjacentHTML('afterbegin', html);
-    })
-}
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
 displayMovement(account1.movements);
 
 // to display html of container
 // console.log(containerMovements.innerHTML);
 
 
+const user = 'Steven Thomas Williams';
+
+const createUserNames = function (accs) {
+  accs.forEach(function(acc) {
+
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  })
+};
+
+console.log(createUserNames(accounts));
+console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -221,7 +237,6 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, key, map) {
     console.log(`${value}: ${value}`);
 })
-*/
 
 ////////////////////////////////////////////////////
 // DATA TRANSFORMATION
@@ -232,7 +247,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurToUsd = 1.1;
 
-const movementsUSD = movements.map(function(mov) {
+const movementsUSD = movements.map(function (mov) {
   return mov * eurToUsd;
 });
 console.log(movements);
@@ -240,7 +255,7 @@ console.log(movementsUSD);
 
 // Arrow function
 console.log('-----Arrow-----');
-const movementUSDArrow = movements.map((mov) => mov * eurToUsd);
+const movementUSDArrow = movements.map(mov => mov * eurToUsd);
 console.log(movementUSDArrow);
 
 console.log('-----for of-----');
@@ -253,9 +268,10 @@ console.log(movementsUSDfor);
 const movementsDescription = movements.map((movement, index, arr) => {
   if (movement > 0) {
     return `Movement ${index + 1}: You deposited ${movement}`;
-}
-else {
+  } else {
     return `Movement ${index + 1}: You withdrew ${Math.abs(movement)}`;
-}
+  }
 });
 console.log(movementsDescription);
+*/
+
