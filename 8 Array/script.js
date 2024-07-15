@@ -92,13 +92,13 @@ displayMovement(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-    ['USD', 'United States dollar'],
-    ['EUR', 'Euro'],
-    ['GBP', 'Pound sterling'],
-  ]);
+// const currencies = new Map([
+//     ['USD', 'United States dollar'],
+//     ['EUR', 'Euro'],
+//     ['GBP', 'Pound sterling'],
+//   ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
 /////////////////////////////////////////////////
@@ -222,3 +222,40 @@ currenciesUnique.forEach(function (value, key, map) {
     console.log(`${value}: ${value}`);
 })
 */
+
+////////////////////////////////////////////////////
+// DATA TRANSFORMATION
+
+// map
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function(mov) {
+  return mov * eurToUsd;
+});
+console.log(movements);
+console.log(movementsUSD);
+
+// Arrow function
+console.log('-----Arrow-----');
+const movementUSDArrow = movements.map((mov) => mov * eurToUsd);
+console.log(movementUSDArrow);
+
+console.log('-----for of-----');
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUsd);
+}
+console.log(movementsUSDfor);
+
+const movementsDescription = movements.map((movement, index, arr) => {
+  if (movement > 0) {
+    return `Movement ${index + 1}: You deposited ${movement}`;
+}
+else {
+    return `Movement ${index + 1}: You withdrew ${Math.abs(movement)}`;
+}
+});
+console.log(movementsDescription);
