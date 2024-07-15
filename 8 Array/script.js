@@ -87,38 +87,56 @@ displayMovement(account1.movements);
 // to display html of container
 // console.log(containerMovements.innerHTML);
 
-
-
-const calcDisplayBalance = function(movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov , 0);
-console.log(balance);
-  labelBalance.textContent = `£${balance}`;
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  console.log(balance);
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
 
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter((mov, i, arr) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUserNames = function (accs) {
-  accs.forEach(function(acc) {
-
+  accs.forEach(function (acc) {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
       .map(name => name[0])
       .join('');
-  })
+  });
 };
 createUserNames(accounts);
-
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 const currencies = new Map([
-    ['USD', 'United States dollar'],
-    ['EUR', 'Euro'],
-    ['GBP', 'Pound sterling'],
-  ]);
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -303,7 +321,7 @@ console.log(depositsFor);
 const withdrawalFor = [];
 for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
 console.log(withdrawalFor);
-*/
+
 
 ///////////////////////////////////////////////////////////////////////
 // reduce method
@@ -329,3 +347,16 @@ const maximum = movements.reduce((acc, cur) => {
 }, movements[0]);
 
 console.log(maximum);
+*/
+
+///////////////////////////////////////////////////////////////////////
+// The magic of chaining methods
+
+const eurToUsd = 1.1;
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
