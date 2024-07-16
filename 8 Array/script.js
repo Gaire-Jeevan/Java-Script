@@ -61,12 +61,14 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovement = function (movements) {
+const displayMovement = function (movements, sort = false) {
   // clear the container of HTML to fill new data
   containerMovements.innerHTML = '';
   // .textContent = 0
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -192,13 +194,12 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
-btnLoan.addEventListener('click', function(e) {
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value)
+  const amount = Number(inputLoanAmount.value);
 
-  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
 
@@ -206,7 +207,7 @@ btnLoan.addEventListener('click', function(e) {
     updateUi(currentAccount);
   }
   inputLoanAmount.value = '';
-})
+});
 
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
@@ -228,6 +229,15 @@ btnClose.addEventListener('click', function (e) {
   }
   inputCloseUsername.value = inputClosePin.value = '';
 });
+
+// we are using this variable because once we may sort it and other time we may not need  
+let sorted = false;
+btnSort.addEventListener('click', function(e) {
+  e.preventDefault();
+  // displayMovement(currentAccount.movements, true);
+  displayMovement(currentAccount.movements, !sorted);
+  // sorted = !sorted; // each time clicking sort it reverse it
+})
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -471,7 +481,7 @@ console.log(firstWithdrawal);
 console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
-*/
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -497,3 +507,73 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+
+//////////////////////////////////////////////////////////////////////
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5], 6], 7, 8];
+console.log(arrDeep.flat(2));
+
+const accountMovments = accounts.map(acc => acc.movements);
+console.log(accountMovments);
+const allMovements = accountMovments.flat(2);
+console.log(allMovements);
+
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .accountMovments.flat(2)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+// Flatmap
+
+const overalBalance3 = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(overalBalance3);
+*/
+
+///////////////////////////////////////////////////////////////////
+// Sorting Array
+
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+
+// return < 0 , A is written before B --> keep order
+// return > 0, B is written beore A --> switch order
+
+// Ascending
+// movements.sort((a, b) => {
+//   if(a > b) {
+//     return 1;
+//   }
+//   if(b > a) {
+//     return -1;
+//   }
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if(a > b) {
+//     return -1;
+//   }
+//   if(b > a) {
+//     return 1;
+//   }
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
