@@ -87,10 +87,11 @@ const displayMovement = function (movements) {
 // to display html of container
 // console.log(containerMovements.innerHTML);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = function (account) {
+  account.balance = account.movements.reduce((acc, mov) => acc + mov, 0);
   // console.log(balance);
-  labelBalance.textContent = `${balance}€`;
+  // account.balance = balance;
+  labelBalance.textContent = `${account.balance}€`;
 };
 
 
@@ -128,6 +129,18 @@ const createUserNames = function (accs) {
 };
 createUserNames(accounts);
 
+// Update UI
+const updateUi = function(account) {
+  // Display movements
+  displayMovement(account.movements);
+
+  // Display balance
+  calcDisplayBalance(account);
+
+  // display summary
+  calcDisplaySummary(account); // passing the whole account
+}
+
 // Event handler
 let currentAccount;
 
@@ -149,15 +162,32 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    // Display movements
-    displayMovement(currentAccount.movements);
-
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
-
-    // display summary
-    calcDisplaySummary(currentAccount); // passing the whole account
+    // Updating UI
+    updateUi(currentAccount);
   }
+});
+
+btnTransfer.addEventListener('click', function(e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+
+  console.log(amount, receiverAcc);
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if(amount > 0 && receiverAcc && currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.username) 
+    {
+      // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // Update UI
+    updateUi(currentAccount);
+  };
+
+
+
 });
 
 /////////////////////////////////////////////////
