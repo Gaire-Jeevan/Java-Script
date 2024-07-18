@@ -330,7 +330,7 @@ console.log(Math.trunc('-23.9'));
 console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(5));
 console.log(+(2.7).toFixed(5));
-*/
+
 
 // Remainder
 
@@ -358,3 +358,15 @@ labelBalance.addEventListener('click', function () {
     }
   });
 });
+*/
+
+// Numeric seperator
+
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const transferFee = 15_00;
+const transferFee2 = 1_000;
+
+console.log(Number('23_000'));
+console.log(parseInt('23_000'));
