@@ -358,8 +358,8 @@ labelBalance.addEventListener('click', function () {
     }
   });
 });
-*/
 
+////////////////////////////////////////////////////////////////////////
 // Numeric seperator
 
 const diameter = 287_460_000_000;
@@ -370,3 +370,35 @@ const transferFee2 = 1_000;
 
 console.log(Number('23_000'));
 console.log(parseInt('23_000'));
+*/
+
+////////////////////////////////////////////////////////////////////////
+// BIGINT
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 4);
+console.log(2 ** 53 + 10);
+
+
+console.log(90071992547409969007199254740996);
+console.log(90071992547409969007199254740996n);
+console.log(BigInt(90071992547409969007199254740996));
+
+// Operations
+console.log(100000n + 1000000n);
+console.log(90071992547409969007199254740996n * 1000000000000n);
+
+const huge = 90071992547409969007199254740996n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+console.log(20n > 15);
+console.log(20n === 20);
+
+console.log(huge + ' is REALLY BIG!!!');
+
+// Division
+console.log(10 / 3n);
+console.log(10 / 3);
