@@ -370,7 +370,7 @@ const transferFee2 = 1_000;
 
 console.log(Number('23_000'));
 console.log(parseInt('23_000'));
-*/
+
 
 ////////////////////////////////////////////////////////////////////////
 // BIGINT
@@ -402,3 +402,40 @@ console.log(huge + ' is REALLY BIG!!!');
 // Division
 console.log(10 / 3n);
 console.log(10 / 3);
+*/
+
+////////////////////////////////////////////////////////////////////////
+// DATE & TIMES
+
+// Create a date
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Jul 18 2024 23:28:44'));
+
+console.log(new Date('December 24, 2024'));
+console.log(new Date('24 june, 2024'));
+
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getYear()); // never use this
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+
+console.log(Date.now());
+console.log(future.setFullYear(2040));
+console.log(future);
