@@ -81,29 +81,26 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = function (date) {
+const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
-  Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
   const daysPassed = calcDaysPassed(new Date(), date);
 
   if (daysPassed === 0) {
     return 'Today';
-  }
-  else if(daysPassed === 1) {
+  } else if (daysPassed === 1) {
     return 'Yesterday';
-  }
-  else if(daysPassed <= 7) {
+  } else if (daysPassed <= 7) {
     return `${daysPassed} days ago`;
-  }
-  else {
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  }
+  } else {
+    // const day = `${date.getDate()}`.padStart(2, 0);
+    // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    // const year = date.getFullYear();
+    // return `${day}/${month}/${year}`;
 
-  
+    return new Intl.DateTimeFormat(locale).format(date);
+  }
 };
 
 const displayMovements = function (account, sort = false) {
@@ -118,7 +115,7 @@ const displayMovements = function (account, sort = false) {
 
     const date = new Date(account.movementsDates[i]);
 
-    const displayDate = formatMovementDate(date);
+    const displayDate = formatMovementDate(date, );
 
     const html = `
       <div class="movements__row">
@@ -195,6 +192,23 @@ let currentAccount;
 
 // day/month/year
 
+// Experimenting API
+
+// const now = new Date();
+// const options = {
+//   hour: 'numeric',
+//   minute: 'numeric',
+//   day: 'numeric',
+//   month: 'long',
+//   year: 'numeric',
+//   weekday: 'long'
+// }
+// const locale = navigator.language;
+// console.log(locale);
+
+// // labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+// labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -212,13 +226,30 @@ btnLogin.addEventListener('click', function (e) {
     containerApp.style.opacity = 100;
 
     // Create current date date and time
+    // const now = new Date();
+    // const day = `${now.getDate()}`.padStart(2, 0);
+    // const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    // const year = now.getFullYear();
+    // const hour = `${now.getHours()}`.padStart(2, 0);
+    // const min = `${now.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
     const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const min = `${now.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      weekday: 'long',
+    };
+    // const locale = navigator.language;
+    // console.log(locale);
+
+    // labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(
+      now
+    );
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -495,7 +526,7 @@ console.log(future.toISOString());
 console.log(Date.now());
 console.log(future.setFullYear(2040));
 console.log(future);
-*/
+
 
 /////////////////////////////////////////////////////////////////
 // Operations with Dates
@@ -509,3 +540,7 @@ const calcDaysPassed = (date1, date2) =>
 
 const days1 = calcDaysPassed(new Date(2037, 10, 19), new Date(2037, 10, 21));
 console.log(days1);
+*/
+
+/////////////////////////////////////////////////////////////////
+// Operations with Dates
