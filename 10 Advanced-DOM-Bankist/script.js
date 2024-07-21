@@ -9,7 +9,6 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
 const openModal = function (e) {
-  
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
@@ -34,6 +33,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+/*
 ////////////////////////////////////////////////////
 
 // Selecting Elements
@@ -124,3 +124,42 @@ logo.classList.contains('c');
 
 // Don't use
 logo.className = 'jonas'
+*/
+
+///////////////////////////////////////////////////
+
+// Smooth Scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1cords = section1.getBoundingClientRect();
+  console.log(s1cords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+
+  // window.scrollTo(
+  //   s1cords.left + window.pageXOffset,
+  //   s1cords.top + window.pageYOffset
+  // );
+
+  // smooth scrolling
+  // window.scrollTo({
+  //   left: s1cords.left + window.pageXOffset,
+  //   top: s1cords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // modern way
+  section1.scrollIntoView({behavior: "smooth"});
+});
