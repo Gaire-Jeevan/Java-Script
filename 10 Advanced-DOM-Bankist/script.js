@@ -33,3 +33,45 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+////////////////////////////////////////////////////
+
+// Selecting Elements
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+
+document.getElementById('seciton--1');
+const allButtons = document.getElementsByTagName('button')
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+// Creating and inserting elements
+
+// .insertAdjacentHTML
+
+const message = document.createElement('div');
+message.classList.add('cookie-messaage');
+// message.textContent = 'We use cookied for improved functionality and analytics.';
+message.innerHTML = 'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+
+// header.prepend(message); // and element as first child
+header.append(message); // last child
+// header.append(message.cloneNode(true)); // to place node at multiple place
+
+// header.before(message);
+// header.after(message);
+
+// Delete elements
+document.querySelector(".btn--close-cookie").addEventListener('click', function() {
+  message.remove();
+  message.parentElement.removeChild(message);
+});
+
+header.insertAdjacentHTML(afterbegin,
+  '<div>Welcome my boy</div>');
