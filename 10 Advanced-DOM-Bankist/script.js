@@ -587,3 +587,17 @@ console.log(h1.parentElement.children);
   }
 });
 */
+
+document.addEventListener('DOMContentLoaded', function(e) {
+   console.log('HTml parsed and DOM tree built!', e);
+})
+
+window.addEventListener('load', function(e) {
+  console.log("page fully loaded");
+})
+
+window.addEventListener('beforeunload', function(e) {
+  e.preventDefault();
+  console.log(e);
+  e.returnValue = '';
+})
