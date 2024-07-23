@@ -7,9 +7,9 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 
   // Never do this
-//   this.calcAge = function () {
-//     console.log(2037 - this.birthYear);
-//   };
+  //   this.calcAge = function () {
+  //     console.log(2037 - this.birthYear);
+  //   };
 };
 
 const jeevan = new Person('Jeevan', 2003);
@@ -28,9 +28,9 @@ console.log(jeevan instanceof Person);
 // Prototypes
 console.log(Person.prototype);
 
-Person.prototype.calcAge = function() {
-    console.log(2037 - this.birthYear);
-}
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
 
 jeevan.calcAge();
 matlida.calcAge();
@@ -47,3 +47,26 @@ console.log(jeevan.species, matlida.species);
 
 console.log(jeevan.hasOwnProperty('firstName'));
 console.log(jeevan.hasOwnProperty('species'));
+
+console.log(jeevan.__proto__);
+// Object.prototype (top of prototupe chain)
+console.log(jeevan.__proto__.__proto__);
+console.log(jeevan.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 4, 5, 6, 9, 3]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(x => x + 1);
