@@ -184,7 +184,7 @@ console.log(stevenSmith.__proto__ === PersonProto);
 const sarah = Object.create(PersonProto);
 sarah.init('sarah', 1850);
 console.log(sarah);
-*/
+
 
 /////////////////////////////////////////////////////
 // Inheritance Between "Classes": constructor functions
@@ -223,3 +223,56 @@ console.log(michale instanceof Object);
 
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor)
+*/
+
+////////////////////////////////////////////////////////////////////////
+// Inhreritance Between Classes and ES6 classes
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // Instance methods
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // static method
+  static hey() {
+    console.log('Hey there');
+    console.log(this);
+  }
+}
+
+class StudetnCl extends PersonCl{
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce () {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  };
+
+  calcAge() {
+    console.log(`I'm ${2037 - this.birthYear}`);
+  }
+}
+
+const john = new StudetnCl('John Cena', 2012)
