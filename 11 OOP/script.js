@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 const Person = function (firstName, birthYear) {
   console.log(this);
   // Instance properties
@@ -70,3 +71,35 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
+*/
+
+// class expression
+// const PersonCl = class{}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(207 - this.birthYear);
+  }
+}
+
+const justin = new PersonCl('Justin', 1998);
+console.log(justin);
+justin.calcAge();
+
+console.log(justin.__proto__ === PersonCl.__proto__);
+
+PersonCl.prototype.greet = function() {
+  console.log(`Hey ${this.firstName}`);
+}
+justin.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Class are first-class citizs
+// 3. classes are executed in strict mode
