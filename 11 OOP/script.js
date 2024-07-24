@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+
 const Person = function (firstName, birthYear) {
   console.log(this);
   // Instance properties
@@ -33,6 +33,14 @@ Person.prototype.calcAge = function () {
   console.log(2037 - this.birthYear);
 };
 
+Person.hey = function() {
+  console.log('Hey there');
+  console.log(this);
+}
+
+Person.hey();
+//////////////////////////////////////////////////
+// Prototype
 jeevan.calcAge();
 matlida.calcAge();
 
@@ -71,7 +79,7 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
-*/
+
 
 // class expression
 // const PersonCl = class{}
@@ -83,6 +91,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance methods
   // Methods will be added to .prototype property
   calcAge() {
     console.log(207 - this.birthYear);
@@ -101,11 +110,21 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // static method
+  static function() {
+    console.log('Hey there');
+    console.log(this);
+  }
+  
+  
 }
 
 const justin = new PersonCl('Justin Sharma', 1998);
 console.log(justin);
 justin.calcAge();
+
+
 console.log(justin.age);
 
 console.log(justin.__proto__ === PersonCl.__proto__);
@@ -118,6 +137,8 @@ justin.greet();
 // 1. Classes are NOT hoisted
 // 2. Class are first-class citizs
 // 3. classes are executed in strict mode
+
+PersonCl.hey();
 
 const walter = new PersonCl('Walter', 1965)
 const account = {
