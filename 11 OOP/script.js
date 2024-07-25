@@ -277,7 +277,7 @@ class StudetnCl extends PersonCl{
 
 const john = new StudetnCl('John Cena', 2012);
 
-*/
+
 
 ////////////////////////////////////////////////////////////////////////
 // Inhreritance Between Classes: Object.create
@@ -309,3 +309,57 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 2010, 'Computer Science');
 jay.introduce();
 jay.calcAge();
+*/
+
+////////////////////////////////////////////////////////////////////////
+// Another class example
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movemetns = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // returning encapsulated property 
+  getMovements() {
+    return this.movemetns;
+  }
+
+  // Public interface
+  deposits(val) {
+    this.movemetns.push(val);
+  }
+
+  withdraw(val) {
+    this.deposits(-val);
+  }
+
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if(this.approveLoan(val)) {
+      this.deposits(val);
+      console.log(`Loan approved!`);
+    }
+  }
+}
+
+const acc1 = new Account('John', 'USD', 2585);
+console.log(acc1);
+
+// instead of accessing property like this we can use methods to interact with it
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+
+acc1.deposits(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+
+console.log(acc1);
