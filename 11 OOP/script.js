@@ -314,7 +314,7 @@ jay.calcAge();
 ////////////////////////////////////////////////////////////////////////
 // Another class example
 
-// there are 4 fields and methods 
+// there are 4 fields and methods
 // 1. Public field
 // 2. Private "
 // 3. Public method
@@ -342,7 +342,7 @@ class Account {
   }
   // 3. Public method
 
-  // returning encapsulated property 
+  // returning encapsulated property
   getMovements() {
     return this.#movements;
   }
@@ -350,24 +350,28 @@ class Account {
   // Public interface
   deposits(val) {
     this._movemetns.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposits(-val);
+    return this;
   }
 
   _approveLoan(val) {
     return true;
+    return this;
   }
 
   requestLoan(val) {
-    if(this._approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposits(val);
       console.log(`Loan approved!`);
+      return this;
     }
   }
 
-  // static 
+  // static
   static helper() {
     console.log('helper');
   }
@@ -375,7 +379,6 @@ class Account {
   // #approveLoan(val) {
   //   return true;
   // }
-
 }
 
 const acc1 = new Account('John', 'USD', 2585);
@@ -397,3 +400,9 @@ console.log(acc1.pin);
 // console.log(acc1.#approvedLoan);
 
 Account.helper();
+
+////////////////////////////////////////////////////////////////////
+// Chaining
+
+acc1.deposits(300).deposits(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
