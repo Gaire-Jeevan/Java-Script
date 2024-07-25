@@ -318,8 +318,9 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movemetns = [];
+    // placing _ in-front of property is just a convention developer himself should undertand about it not to access such property from outside
+    this._pin = pin;
+    this._movemetns = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
@@ -327,24 +328,24 @@ class Account {
 
   // returning encapsulated property 
   getMovements() {
-    return this.movemetns;
+    return this._movemetns;
   }
 
   // Public interface
   deposits(val) {
-    this.movemetns.push(val);
+    this._movemetns.push(val);
   }
 
   withdraw(val) {
     this.deposits(-val);
   }
 
-  approveLoan(val) {
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if(this.approveLoan(val)) {
+    if(this._approveLoan(val)) {
       this.deposits(val);
       console.log(`Loan approved!`);
     }
@@ -361,5 +362,7 @@ console.log(acc1);
 acc1.deposits(250);
 acc1.withdraw(140);
 acc1.requestLoan(1000);
+console.log(acc1.getMovements());
 
 console.log(acc1);
+console.log(acc1.pin);
