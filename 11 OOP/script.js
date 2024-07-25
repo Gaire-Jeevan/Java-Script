@@ -314,21 +314,37 @@ jay.calcAge();
 ////////////////////////////////////////////////////////////////////////
 // Another class example
 
+// there are 4 fields and methods 
+// 1. Public field
+// 2. Private "
+// 3. Public method
+// 4. Private "
+// (there is also the static version)
+
 class Account {
+  // 1. Public field
+  locale = navigator.language;
+  _movemetns = [];
+
+  // 2. Private fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     // placing _ in-front of property is just a convention developer himself should undertand about it not to access such property from outside
-    this._pin = pin;
-    this._movemetns = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this._movemetns = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
+  // 3. Public method
 
   // returning encapsulated property 
   getMovements() {
-    return this._movemetns;
+    return this.#movements;
   }
 
   // Public interface
@@ -350,6 +366,16 @@ class Account {
       console.log(`Loan approved!`);
     }
   }
+
+  // static 
+  static helper() {
+    console.log('helper');
+  }
+  // 4. Private method
+  // #approveLoan(val) {
+  //   return true;
+  // }
+
 }
 
 const acc1 = new Account('John', 'USD', 2585);
@@ -366,3 +392,8 @@ console.log(acc1.getMovements());
 
 console.log(acc1);
 console.log(acc1.pin);
+// console.log(acc1.#movemetns);
+// console.log(acc1.#pin);
+// console.log(acc1.#approvedLoan);
+
+Account.helper();
