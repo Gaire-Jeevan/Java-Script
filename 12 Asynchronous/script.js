@@ -480,7 +480,7 @@ console.log('1. Will get location');
 // } catch(err) {
 //   alert(err.message)
 // }
-*/
+
 
 //////////////////////////////////////////////////////////////////
 // Running Promises in Parallel
@@ -507,3 +507,54 @@ const get3Countries = async function (c1, c2, c3) {
 };
 
 get3Countries('nepal', 'portugal', 'india');
+*/
+
+//////////////////////////////////////////////////////////////////
+// Other Promise Combinators race, allSettled and any
+
+// Promise.race
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v3.1/name/italy`),
+    getJSON(`https://restcountries.com/v3.1/name/egypt`),
+    getJSON(`https://restcountries.com/v3.1/name/mexico`),
+  ]);
+  console.log(res[0]);
+})();
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('request took too long!'));
+    }, sec);
+  });
+};
+
+Promise.race([getJSON(`https://restcountries.com/v3.1/name/italy`), timeout(1)])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('sucess'),
+  Promise.reject('sucess'),
+  Promise.resolve('Another sucess'),
+]).then(res => console.log(res));
+
+Promise.all([
+  Promise.resolve('sucess'),
+  Promise.reject('sucess'),
+  Promise.resolve('Another sucess'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+
+  // Promise.any 
+  Promise.any([
+    Promise.resolve('sucess'),
+    Promise.reject('sucess'),
+    Promise.resolve('Another sucess'),
+  ])
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
