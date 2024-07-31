@@ -586,8 +586,10 @@ console.log(h1.parentElement.children);
     el.style.transform = 'scale(0.5)'
   }
 });
-*/
 
+
+/////////////////////////////////////////////////////////////////
+// Lifecycle DOM Event
 document.addEventListener('DOMContentLoaded', function(e) {
    console.log('HTml parsed and DOM tree built!', e);
 })
@@ -601,3 +603,4 @@ window.addEventListener('beforeunload', function(e) {
   console.log(e);
   e.returnValue = '';
 })
+  */
